@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>组件实例props</title>
+</head>
+<body>
+	<!-- 准备好一个“容器” -->
+	<div id="test"></div>
+	<div id="test1"></div>
+
+	<!-- 引入react核心库 -->
+	<script type="text/javascript" src="../js/react.development.js"></script>
+	<!-- 引入react-dom，用于支持react操作DOM -->
+	<script type="text/javascript" src="../js/react-dom.development.js"></script>
+	<!-- 引入babel，用于将jsx转为js -->
+	<script type="text/javascript" src="../js/babel.min.js"></script>
+	<script type="text/javascript" src="../js/prop-types.js"></script>
+
+	<script type="text/babel" >
+		//1.类式组件
+		class Demo extends React.Component {
+			render(){
+				const {name,age,sex} = this.props
+                return (
+                    <ul>
+                        <li>姓名：{name}</li>
+                        <li>年龄：{age}</li>
+                        <li>性别：{sex}</li>
+                    </ul>
+                )
+			}
+		}
+        Demo.propTypes = {
+            name:PropTypes.string.isRequired,
+			sex:PropTypes.string,
+			age:PropTypes.number,
+        }
+		Demo.defaultProps = {
+			sex:'不男不女',
+			age:18,
+		}
+		ReactDOM.render(<Demo name="jerry" age={18} sex="男"/>, document.getElementById('test'))
+        const p = {name:'老刘', age:18,sex:'女'}
+		ReactDOM.render(<Demo {...p}/>, document.getElementById('test1'))
+	</script>
+</body>
+</html>
