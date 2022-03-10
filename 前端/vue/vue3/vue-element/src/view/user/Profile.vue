@@ -1,11 +1,16 @@
 <template>
   <h1>个人信息</h1>
+  <Fixheight/>
   {{id}}
 </template>
 <script>
+import Fixheight from './Fixheight';
 export default {
   props:['id'],
   name: "UserProfile",
+  components:{
+    Fixheight
+  },
   beforeRouteEnter:(to, from, next) =>{
     console.log("准备进入个人信息页面");
     next(vm=>{

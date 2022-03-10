@@ -9,6 +9,8 @@ import Main from '../view/Main'
 import UserList from '../view/user/List';
 import UserProfile from '../view/user/Profile';
 import NotFound from '../view/NotFound';
+import MyLogo from '../view/user/mylogo';
+import Fixheight from '../view/user/Fixheight';
 
 
 //安装路由
@@ -26,7 +28,7 @@ export default new createRouter({
         },
         {
             //路由路径
-            path:'/main',
+            path:'/',
             name:'main',
             component:Main,
             children:[
@@ -40,11 +42,19 @@ export default new createRouter({
                     path:'/user/list',
                     component:UserList 
                  },
+                 {
+                    path:'/user/mylogo',
+                    component:MyLogo,
+                 },
+                 {
+                    path:'/user/fixheight',
+                    component:Fixheight,
+                 },
             ]
         },
         {
             path:'/goHome',
-            redirect: '/main'
+            redirect: '/'
         },
         {
             // path:'*',

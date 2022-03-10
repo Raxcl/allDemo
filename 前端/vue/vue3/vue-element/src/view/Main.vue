@@ -10,7 +10,9 @@
             <el-menu-item-group>
               <el-menu-item index="1-1">
                 <!--插入的地方-->
-                <router-link :to="{ name: 'userProfile', params: { id: 3 } }">个人信息</router-link>
+                <router-link :to="{ name: 'userProfile', params: { id: 3 } }">
+                  个人信息
+                </router-link>
               </el-menu-item>
               <el-menu-item index="1-2">
                 <!--插入的地方-->
@@ -18,7 +20,15 @@
               </el-menu-item>
               <el-menu-item index="1-3">
                 <!--插入的地方-->
+                <router-link to="/user/mylogo">我的logo</router-link>
+              </el-menu-item>
+              <el-menu-item index="1-4">
+                <!--插入的地方-->
                 <router-link to="/goHome">回到首页</router-link>
+              </el-menu-item>
+               <el-menu-item index="1-5">
+                <!--插入的地方-->
+                <router-link to="/user/fixheight">高度变化</router-link>
               </el-menu-item>
             </el-menu-item-group>
           </el-sub-menu>
