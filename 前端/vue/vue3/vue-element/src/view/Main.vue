@@ -63,10 +63,17 @@
       </el-container>
     </el-container>
   </div>
+  <abcd/>
 </template>
 <script>
+
+import abcd from './live/live2d.vue'
+
 export default {
   name: "Main",
+  components: {
+    abcd
+  },
 };
 </script>
 <style scoped>
