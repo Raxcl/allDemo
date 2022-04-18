@@ -14,27 +14,39 @@ import java.util.Stack;
 public class QuickSortReview1 {
     public static void main(String[] args) {
         int[] arr = new int[]{4,4,6,5,3,2,8,1};
-//        quickSort(arr,0,arr.length-1);
-        quickSort1(arr,0,arr.length-1);
+        quickSort01(arr,0,arr.length-1);
+        System.out.println(Arrays.toString(arr));
+        arr = new int[]{4,4,6,5,3,2,8,1};
+        quickSort02(arr,0,arr.length-1);
+        System.out.println(Arrays.toString(arr));
+        arr = new int[]{4,4,6,5,3,2,8,1};
+        quickSort11(arr,0,arr.length-1);
+        System.out.println(Arrays.toString(arr));
+        arr = new int[]{4,4,6,5,3,2,8,1};
+        quickSort12(arr,0,arr.length-1);
         System.out.println(Arrays.toString(arr));
     }
 
 
 
     //递归
-    private static void quickSort(int[] arr, int startIndex, int endIndex) {
+    private static void quickSort01(int[] arr, int startIndex, int endIndex) {
         if (startIndex<endIndex){
-//            int pivot = partition(arr,startIndex,endIndex);
             int pivot = partition1(arr,startIndex,endIndex);
-            quickSort(arr,startIndex,pivot-1);
-            quickSort(arr,pivot+1,endIndex);
+            quickSort01(arr,startIndex,pivot-1);
+            quickSort01(arr,pivot+1,endIndex);
         }
-
-
+    }
+    private static void quickSort02(int[] arr, int startIndex, int endIndex) {
+        if (startIndex<endIndex){
+            int pivot = partition2(arr,startIndex,endIndex);
+            quickSort02(arr,startIndex,pivot-1);
+            quickSort02(arr,pivot+1,endIndex);
+        }
     }
 
     //栈
-    private static void quickSort1(int[] arr, int startIndex, int endIndex) {
+    private static void quickSort11(int[] arr, int startIndex, int endIndex) {
         //用一个集合栈来代替递归的函数栈
         Stack<Map<String, Integer>> stack = new Stack<>();
         Map<String, Integer> rootParam = new HashMap<>();
@@ -43,8 +55,33 @@ public class QuickSortReview1 {
         stack.push(rootParam);
         while(!stack.isEmpty()){
             Map<String, Integer> param = stack.pop();
-//            int pivotIndex = partition(arr,param.get("startIndex"),param.get("endIndex"));
             int pivotIndex = partition1(arr,param.get("startIndex"),param.get("endIndex"));
+            if(param.get("startIndex")<pivotIndex-1){
+                Map<String, Integer> leftParam = new HashMap<>();
+                leftParam.put("startIndex",startIndex);
+                leftParam.put("endIndex",pivotIndex-1);
+                stack.push(leftParam);
+            }
+            if(pivotIndex+1<param.get("endIndex")){
+                Map<String, Integer> rightParam = new HashMap<>();
+                rightParam.put("startIndex",pivotIndex+1);
+                rightParam.put("endIndex",endIndex);
+                stack.push(rightParam);
+            }
+
+        }
+    }
+
+    private static void quickSort12(int[] arr, int startIndex, int endIndex) {
+        //用一个集合栈来代替递归的函数栈
+        Stack<Map<String, Integer>> stack = new Stack<>();
+        Map<String, Integer> rootParam = new HashMap<>();
+        rootParam.put("startIndex",startIndex);
+        rootParam.put("endIndex",endIndex);
+        stack.push(rootParam);
+        while(!stack.isEmpty()){
+            Map<String, Integer> param = stack.pop();
+            int pivotIndex = partition2(arr,param.get("startIndex"),param.get("endIndex"));
             if(param.get("startIndex")<pivotIndex-1){
                 Map<String, Integer> leftParam = new HashMap<>();
                 leftParam.put("startIndex",startIndex);
@@ -69,7 +106,7 @@ public class QuickSortReview1 {
     }
 
     //双边循环法
-    private static int partition(int[] arr, int startIndex, int endIndex) {
+    private static int partition2(int[] arr, int startIndex, int endIndex) {
         int left = startIndex;
         int right = endIndex;
         //选取随机一个值作为基准值
