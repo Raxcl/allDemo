@@ -20,7 +20,6 @@ public class HeapSort {
         for (int i = (array.length-2)/2; i>=0; i--){
             downAdjust(array, i, array.length);
         }
-        System.out.println(Arrays.toString(array));
         //2. 循环删除堆顶元素，移到集合尾部，调整堆产生新的堆顶
         for (int i=array.length-1; i>0; i--){
             int temp = array[i];
