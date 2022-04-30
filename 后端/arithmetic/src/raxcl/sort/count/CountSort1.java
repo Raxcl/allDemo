@@ -30,8 +30,8 @@ public class CountSort1 {
         int d = max - min;
         //创建统计数组并统计对应元素的个数
         int[] countArray = new int[d+1];
-        for(int i=0; i<array.length; i++){
-            countArray[array[i]-min]++;
+        for (int a : array) {
+            countArray[a - min]++;
         }
         //统计数组做变形，后面的元素等于前面的元素之和
         for (int i=1; i<countArray.length; i++){

@@ -17,7 +17,6 @@ public class RemoveKDigitsReview3 {
     private static String removeKDigits(String s, int k) {
         char[] stack = new char[s.length()];
         stack[0] = s.charAt(0);
-        int sss = s.length()-k;
         int index=0;
         for (int i = 0; i < s.length(); i++) {
             char c =s.charAt(i);

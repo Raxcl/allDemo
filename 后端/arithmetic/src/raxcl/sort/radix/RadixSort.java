@@ -18,7 +18,6 @@ public class RadixSort {
         for (int k=maxLength-1; k>=0; k--){
             //计数排序的过程，分成3步
             //1. 创建辅助排序的统计数组， 并把待排序的字符对号入座
-            //todo 回去看看源代码
             //这里为了代码简介，直接使用ASCII码范围作为数组长度
             int[] count = new int[ASCII_RANGE];
             for (int i = 0; i < array.length; i++) {
@@ -37,7 +36,6 @@ public class RadixSort {
                 count[index]--;
             }
             //下一轮排序需要以上一轮的排序结果为基础，因此把结果赋值到array
-            //todo 待验证
             array = sortedArray.clone();
         }
         return array;
