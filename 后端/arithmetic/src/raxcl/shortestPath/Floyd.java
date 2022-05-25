@@ -31,7 +31,6 @@ public class Floyd {
                         continue;
                     }
                     matrix[i][j] = Math.min(matrix[i][j], matrix[i][k] + matrix[k][j]);
-
                 }
             }
         }

@@ -29,7 +29,7 @@ public class Dijkstra {
     }
 
     //Dijkstra最短路径算法
-    private static int[] dijkstra(Graph graph, int startIdex) {
+    private static int[] dijkstra(Graph graph, int startIndex) {
         //图的顶点数量
         int size = graph.vertexes.length;
         //创建距离表，存储从起点到每一个顶点的临时距离
@@ -42,7 +42,7 @@ public class Dijkstra {
         }
         //遍历起点，刷新距离表
         access[0] = true;
-        List<Edge> edgesFromStart = graph.adj[startIdex];
+        List<Edge> edgesFromStart = graph.adj[startIndex];
         for (Edge edge:edgesFromStart){
             distances[edge.index] = edge.weight;
         }
@@ -77,7 +77,7 @@ public class Dijkstra {
     }
 
     //Dijkstra最短路径算法（返回完整路径）
-    public static int[] dijkstraV2(Graph graph, int startIdex){
+    public static int[] dijkstraV2(Graph graph, int startIndex){
         //图的顶点数量
         int size = graph.vertexes.length;
         //创建距离表，存储从起点到每一个顶点的临时距离
@@ -93,7 +93,7 @@ public class Dijkstra {
 
         //遍历起点，刷新距离表
         access[0] = true;
-        List<Edge> edgesFromStart = graph.adj[startIdex];
+        List<Edge> edgesFromStart = graph.adj[startIndex];
 
         for (Edge edge: edgesFromStart){
             distances[edge.index] = edge.weight;
@@ -147,7 +147,6 @@ public class Dijkstra {
         graph.vertexes[6] = new Vertex("G");
         graph.adj[0].add(new Edge(1,5));
         graph.adj[0].add(new Edge(2,2));
-        graph.adj[1].add(new Edge(0,5));
         graph.adj[1].add(new Edge(0,5));
         graph.adj[1].add(new Edge(3,1));
         graph.adj[1].add(new Edge(4,6));

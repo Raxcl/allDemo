@@ -1,5 +1,7 @@
 package raxcl.math.bigNumberSum.review;
 
+import java.util.Arrays;
+
 /**
  * 大整数相加复习4
  *
@@ -22,6 +24,8 @@ public class BigNumberSum4 {
         for (int i=0; i<b.length(); i++){
             numberB[i] = b.charAt(b.length()-1-i)-'0';
         }
+        System.out.println(Arrays.toString(numberA));
+        System.out.println(Arrays.toString(numberB));
         for (int i=0; i<max; i++){
             int num = numberA[i] + numberB[i];
             if (num>9){

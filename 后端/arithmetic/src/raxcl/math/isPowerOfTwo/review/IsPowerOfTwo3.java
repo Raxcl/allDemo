@@ -1,7 +1,7 @@
 package raxcl.math.isPowerOfTwo.review;
 
 /**
- * 复习3
+ * 是否为2的整数次幂复习3
  *
  * @author D30100_chenlong
  * @date 2022/4/21 10:52
