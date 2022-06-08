@@ -77,8 +77,8 @@ public class QuickSortReview5 {
     private static void quickSort02(int[] array, int startIndex, int endIndex) {
         if (startIndex<endIndex){
             int pivot = partition2(array,startIndex,endIndex);
-            quickSort01(array,startIndex,pivot-1);
-            quickSort01(array,pivot+1,endIndex);
+            quickSort02(array,startIndex,pivot-1);
+            quickSort02(array,pivot+1,endIndex);
         }
     }
 
