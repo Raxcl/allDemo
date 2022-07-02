@@ -14,11 +14,9 @@ public class IntegerCacheTest {
         System.out.println(test);
     }
 
-    private boolean test(Object obj) {
+    private boolean test() {
         String a="a";
         a.equals(a);
-        StringBuffer buffer
-                StringBuilder
         return true;
         
     }
