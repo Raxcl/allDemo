@@ -1,0 +1,29 @@
+class Solution {
+    public int minArray(int[] numbers) {
+        /**
+         * 二分法；不断和最右边元素比较，
+         * 如果mid比right小，说明右边有序向左找
+         * 如果mid比right大，说明最小值在右边，向右查找
+         * 如果mid==right，right--,mid--,重新比较
+         * 如果left==right,结束循环，返回left或者mid
+         */
+        int left=0, right=numbers.length-1;
+        if (right==0){
+            return numbers[right];
+        }
+        while(left<right){
+            int mid = left+(right-left>>1);
+            if (numbers[mid]<numbers[right]){
+                right=mid;
+            }else if(numbers[mid]>numbers[right]){
+                left = mid+1;
+            }else{
+                right--;
+            }
+        }
+        return numbers[left];
+    }
+}
+
+//runtime:0 ms
+//memory:41.1 MB

@@ -38,7 +38,7 @@ import java.util.HashMap;
 public class ZhongJianErChaShuLcof{
     public static void main(String[] args) {
         Solution solution = new ZhongJianErChaShuLcof().new Solution();
-
+        solution.buildTree(new int[]{3,9,20,15,7}, new int[]{9,3,15,20,7});
         
     }
 
@@ -53,26 +53,30 @@ public class ZhongJianErChaShuLcof{
  * }
  */
 class Solution {
-    int[] preorder;
-    HashMap<Integer,Integer> map = new HashMap<>();
+    HashMap<Integer, Integer> map = new HashMap<>();
     public TreeNode buildTree(int[] preorder, int[] inorder) {
-        this.preorder = preorder;
-        for (int i = 0; i < inorder.length; i++) {
+        //构建二叉树， 不断根据前序找中序的根节点，和左右树，由于没有重复值，可以用hashmap增加查询效率
+        //封装中序遍历
+        int n = inorder.length;
+        for (int i = 0; i < n; i++) {
             map.put(inorder[i], i);
         }
-        return myBuildTree(0,preorder.length-1, 0, inorder.length-1);
+        return myBuilderTree(preorder, 0, n - 1, 0, n - 1);
     }
-    public TreeNode myBuildTree(int preLeft, int preRight, int inLeft, int inRight){
-        if (preLeft>preRight){
+
+    private TreeNode myBuilderTree(int[] preorder, int preLeft, int preRight, int inLeft, int inRight) {
+        if (preLeft > preRight) {
             return null;
         }
-        TreeNode root = new TreeNode(preorder[preLeft]);
-        int rootIndex = map.get(preorder[preLeft]);
-        int leftSize = rootIndex-inLeft;
-        root.left = myBuildTree(preLeft+1, preLeft+leftSize, inLeft, rootIndex-1);
-        root.right = myBuildTree(preLeft+leftSize+1, preRight, rootIndex+1, inRight);
-        return root;
+        int root = preorder[preLeft];
+        TreeNode treeNode = new TreeNode(root);
+        int index = map.get(root);
+        int leftSize = index - inLeft;
+        treeNode.left = myBuilderTree(preorder, preLeft + 1, preLeft + leftSize, inLeft, index - 1);
+        treeNode.right = myBuilderTree(preorder, preLeft + leftSize + 1, preRight, index + 1, inRight);
+        return treeNode;
     }
+
 }
 //leetcode submit region end(Prohibit modification and deletion)
 

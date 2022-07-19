@@ -43,6 +43,7 @@ package leetcode.editor.cn;
 public class XuanZhuanShuZuDeZuiXiaoShuZiLcof{
     public static void main(String[] args) {
         Solution solution = new XuanZhuanShuZuDeZuiXiaoShuZiLcof().new Solution();
+        System.out.println(solution.minArray(new int[]{1,3,5}));
         
     }
 
@@ -53,10 +54,18 @@ class Solution {
         // 二分 ，mid 和 right比。34 5 12 小说明最小值在mid或者左边，大说明在右边，等于就right--
         int left = 0;
         int right = numbers.length - 1;
-        int mid = right / 2;
+        int mid = 0;
         while (left < right) {
-
+            mid = left + (right - left >> 1);
+            if (numbers[mid] < numbers[right]) {
+                right = mid;
+            } else if (numbers[mid] > numbers[right]) {
+                left = mid + 1;
+            } else {
+                right--;
+            }
         }
+        return numbers[right];
 
     }
 }

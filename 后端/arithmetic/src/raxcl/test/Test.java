@@ -12,6 +12,10 @@ public class Test {
     public static void main(String[] args) {
         Test test = new Test();
         test.duplicateZeros(new int[]{1,0,2,3,0,4,5,0});
+        double a = 1.1, b = 1.1;
+        if (a == b) {
+            System.out.println("哈哈哈");
+        }
     }
 
     public void duplicateZeros(int[] arr) {
