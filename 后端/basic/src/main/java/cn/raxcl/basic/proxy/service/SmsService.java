@@ -1,4 +1,4 @@
-package proxy.service;
+package cn.raxcl.basic.proxy.service;
 
 /**
  * 发送短信

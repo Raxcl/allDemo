@@ -1,3 +1,5 @@
+package cn.raxcl.basic.test;
+
 /**
  * 可变参数测试
  *

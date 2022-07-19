@@ -1,7 +1,8 @@
-package proxy.dynamicProxy.jdk;
+package cn.raxcl.basic.proxy.dynamicProxy.jdk;
 
-import proxy.service.SmsService;
-import proxy.service.SmsServiceImpl;
+
+import cn.raxcl.basic.proxy.service.SmsService;
+import cn.raxcl.basic.proxy.service.SmsServiceImpl;
 
 /**
  * @author D30100_chenlong

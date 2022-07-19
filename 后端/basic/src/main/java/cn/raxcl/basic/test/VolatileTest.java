@@ -1,3 +1,5 @@
+package cn.raxcl.basic.test;
+
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**

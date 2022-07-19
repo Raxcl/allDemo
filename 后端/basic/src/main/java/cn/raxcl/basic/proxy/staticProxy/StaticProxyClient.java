@@ -1,7 +1,8 @@
-package proxy.staticProxy;
+package cn.raxcl.basic.proxy.staticProxy;
 
-import proxy.service.SmsService;
-import proxy.service.SmsServiceImpl;
+
+import cn.raxcl.basic.proxy.service.SmsService;
+import cn.raxcl.basic.proxy.service.SmsServiceImpl;
 
 /**
  * @author D30100_chenlong

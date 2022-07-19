@@ -1,3 +1,5 @@
+package cn.raxcl.basic.test;
+
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.LinkedList;

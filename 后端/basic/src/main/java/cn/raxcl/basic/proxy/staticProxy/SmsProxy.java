@@ -1,6 +1,7 @@
-package proxy.staticProxy;
+package cn.raxcl.basic.proxy.staticProxy;
 
-import proxy.service.SmsService;
+
+import cn.raxcl.basic.proxy.service.SmsService;
 
 /**
  * 静态代理实现短信发送接口
