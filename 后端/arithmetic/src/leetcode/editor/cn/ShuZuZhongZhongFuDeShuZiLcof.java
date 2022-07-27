@@ -30,18 +30,22 @@ public class ShuZuZhongZhongFuDeShuZiLcof{
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int findRepeatNumber(int[] nums) {
-        //原地交换
+        // 由于特殊性，可以不断交换，如果nums[index] = nums[nums[index]],返回值，继续判断index == nums[index]
+        // 走到下一个元素，22345
         int index = 0;
         while (index < nums.length) {
+            int temp = nums[index];
             if (nums[index] == index) {
                 index++;
-            } else if (nums[index] == nums[nums[index]]) {
-                return nums[index];
-            } else {
-                int temp = nums[index];
-                nums[index] = nums[temp];
-                nums[temp] = temp;
+                continue;
             }
+
+            if (nums[index] == nums[temp]) {
+                return temp;
+            }
+
+            nums[index] = nums[temp];
+            nums[temp] = temp;
         }
         return -1;
     }

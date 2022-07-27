@@ -1,0 +1,71 @@
+class Solution {
+    public boolean isMatch(String s, String p) {
+        /**
+         * 模拟
+         * 定义 int index1 指向 s的字符， index2 指向 p
+         *  判断 p的字符，
+         *  1. 字母 + *，
+         *      s.charAt(index1) 等于 跳到不等
+         *  2. .*
+         *      return true;
+         *  3. .
+         *      跳过一个字符
+         *  4. 字母
+         *      判断该字符
+         */
+        int index1 = 0, index2 = 0;
+        while (index1 < s.length() && index2 < p.length()) {
+            char ch = p.charAt(index2);
+            if (ch == '.') {
+                if (index2 + 1 < p.length() && p.charAt(index2 + 1) == '*') {
+                    //逻辑变更， 匹配下一个
+                    // todo
+                    index2 = index2 + 2;
+                    if (index2 == p.length()) {
+                        return true;
+                    }
+                    while (index1 < s.length() && s.charAt(index1) != p.charAt(index2)) {
+                        index1++;
+                    }
+                    if (index1 == s.length()) {
+                        return false;
+                    }
+
+                    if (index2 < p.length() && s.charAt(index1) == p.charAt(index2)) {
+                        index1++;
+                    }
+                }
+                index1++;
+            } else if (ch >= 'a' && ch <= 'z') {
+                if (index2 + 1 < p.length() && p.charAt(index2 + 1) == '*') {
+                    index2++;
+                    if (index2 + 1 < p.length() && p.charAt(index2 + 1) == ch) {
+                        index2++;
+                    }
+                    //匹配 *
+                    while (index1 < s.length() && s.charAt(index1) == ch) {
+                        index1++;
+                    }
+                } else {
+                    //不等于，返回
+                    if (s.charAt(index1) != ch) {
+                        return false;
+                    }
+                    index1++;
+                }
+            }
+            index2++;
+        }
+        if (index1 == s.length() && index2 == p.length()) {
+            return true;
+        }
+        return false;
+    }
+}
+
+//total_testcases:448
+//total_correct:386
+//input_formatted:"aaa"
+"ab*a*c*a"
+//expected_output:true
+//code_output:false

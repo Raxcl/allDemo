@@ -46,16 +46,15 @@ public class ErWeiShuZuZhongDeChaZhaoLcof{
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public boolean findNumberIn2DArray(int[][] matrix, int target) {
-        if (matrix.length==0){
-            return false;
-        }
-        int m=0, n=matrix[0].length-1;
-        while(m<matrix.length && n>=0){
-            if (matrix[m][n]==target){
+        if (matrix.length == 0) return false;
+        int m = 0;
+        int n = matrix[0].length - 1;
+        while (m < matrix.length && n >= 0) {
+            if (matrix[m][n] == target) {
                 return true;
-            }else if(matrix[m][n]>target){
+            } else if (matrix[m][n] > target) {
                 n--;
-            }else{
+            } else {
                 m++;
             }
         }

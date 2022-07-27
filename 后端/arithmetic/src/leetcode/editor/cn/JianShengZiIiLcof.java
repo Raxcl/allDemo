@@ -38,20 +38,19 @@ public class JianShengZiIiLcof{
 
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
-    private final int mod = 1000000007;
 
     public int cuttingRope(int n) {
-        // 大整数，贪心算法
-        // 3次最优，不断剪3
-        if (n < 4) {
+        if(n < 4) {
             return n - 1;
         }
-        long res = 1L;
+        int mod = 1000000007;
+        // 贪心
+        long res = 1;
         while (n > 4) {
-            res = res * 3 % mod;
+            res = (res * 3) % mod;
             n -= 3;
         }
-        return (int) (res * n % mod);
+        return (int) ((res * n) % mod);
     }
 
 

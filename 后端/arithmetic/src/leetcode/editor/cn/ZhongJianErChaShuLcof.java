@@ -55,28 +55,27 @@ public class ZhongJianErChaShuLcof{
 class Solution {
     HashMap<Integer, Integer> map = new HashMap<>();
     public TreeNode buildTree(int[] preorder, int[] inorder) {
-        //构建二叉树， 不断根据前序找中序的根节点，和左右树，由于没有重复值，可以用hashmap增加查询效率
-        //封装中序遍历
-        int n = inorder.length;
-        for (int i = 0; i < n; i++) {
+        // 找出中序中间节点
+        // 遍历中序
+        for (int i = 0; i < inorder.length; i++) {
             map.put(inorder[i], i);
         }
-        return myBuilderTree(preorder, 0, n - 1, 0, n - 1);
+        return myBuildTree(preorder, 0, preorder.length - 1, 0, inorder.length - 1);
     }
 
-    private TreeNode myBuilderTree(int[] preorder, int preLeft, int preRight, int inLeft, int inRight) {
+    private TreeNode myBuildTree(int[] preorder, int preLeft, int preRight, int inLeft, int inRight) {
         if (preLeft > preRight) {
             return null;
         }
+        // 根节点
         int root = preorder[preLeft];
-        TreeNode treeNode = new TreeNode(root);
-        int index = map.get(root);
-        int leftSize = index - inLeft;
-        treeNode.left = myBuilderTree(preorder, preLeft + 1, preLeft + leftSize, inLeft, index - 1);
-        treeNode.right = myBuilderTree(preorder, preLeft + leftSize + 1, preRight, index + 1, inRight);
-        return treeNode;
+        TreeNode node = new TreeNode(root);
+        int inRootIndex = map.get(root);
+        int leftSize = inRootIndex - inLeft;
+        node.left = myBuildTree(preorder, preLeft + 1, preLeft + leftSize, inLeft, inRootIndex - 1);
+        node.right = myBuildTree(preorder, preLeft + leftSize + 1, preRight, inRootIndex + 1, inRight);
+        return node;
     }
-
 }
 //leetcode submit region end(Prohibit modification and deletion)
 

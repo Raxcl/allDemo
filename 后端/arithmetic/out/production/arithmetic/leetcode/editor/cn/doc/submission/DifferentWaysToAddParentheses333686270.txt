@@ -1,0 +1,37 @@
+class Solution {
+    HashMap<String, List<Integer>> memo = new HashMap<>();
+    public List<Integer> diffWaysToCompute(String expression) {
+        if (memo.containsKey(expression)){
+            return memo.get(expression);
+        }
+        List<Integer> res = new ArrayList<>();
+        for (int i = 0; i < expression.length(); i++) {
+            char ch = expression.charAt(i);
+            if (ch=='+' || ch=='-' || ch=='*'){
+                List<Integer> left = diffWaysToCompute(expression.substring(0, i));
+                List<Integer> right = diffWaysToCompute(expression.substring(i+1));
+                for(Integer a: left){
+                    for (Integer b: right){
+                        if (ch == '+') {
+                            res.add(a+b);
+                        }else if(ch=='-'){
+                            res.add(a-b);
+                        }else{
+                            res.add(a*b);
+                        }
+                    }
+                }
+            }
+        }
+        if (res.isEmpty()){
+            res.add(Integer.valueOf(expression));
+        }
+        memo.put(expression, res);
+        return res;
+    }
+
+
+}
+
+//runtime:1 ms
+//memory:40.2 MB

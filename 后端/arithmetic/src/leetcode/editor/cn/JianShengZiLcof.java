@@ -35,16 +35,16 @@ public class JianShengZiLcof {
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         /**
-         * 动态规划(至少剪一刀)
-         * 初始方程： dp[2] = 1;
-         * 状态转移方程：f(n) = Math.max(j*(n-1), j*dp[n-1])
+         * 剪绳子使得每段相乘最大(最少剪一刀)
+         * 动态规划：用dp存储不同长度的最优解
+         * 初始状态：dp[2] = 1, dp[3] = 2;
+         * 状态转移方程： dp[n] = Math.max(j * (n-j), j * dp[n - j]);
          */
         public int cuttingRope(int n) {
             int[] dp = new int[n + 1];
             dp[2] = 1;
-            //从剪3刀开始，每次增加一刀，找出一次最优解
             for (int i = 3; i <= n; i++) {
-                for (int j = 2; j < i; j++) {
+                for (int j = 2; j <= i; j++) {
                     dp[i] = Math.max(dp[i], Math.max(j * (i - j), j * dp[i - j]));
                 }
             }

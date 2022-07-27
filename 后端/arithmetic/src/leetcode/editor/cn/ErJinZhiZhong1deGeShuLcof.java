@@ -61,14 +61,10 @@ public class ErJinZhiZhong1deGeShuLcof{
 public class Solution {
     // you need to treat n as an unsigned value
     public int hammingWeight(int n) {
-        /**
-         * 返回补码中1的个数
-         * 如何求补码？需要求吗？貌似不需要
-         */
         int res = 0;
         while (n != 0) {
-            res += (n & 1) == 0 ? 0 : 1;
-            n >>= 1;
+            n &= n - 1;
+            res++;
         }
         return res;
     }

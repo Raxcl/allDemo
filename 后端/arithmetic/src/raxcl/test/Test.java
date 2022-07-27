@@ -10,21 +10,18 @@ public class Test {
     //输出今天日期并格式化”yyyy-MM-dd”
 
     public static void main(String[] args) {
-        Test test = new Test();
-        test.duplicateZeros(new int[]{1,0,2,3,0,4,5,0});
-        double a = 1.1, b = 1.1;
-        if (a == b) {
-            System.out.println("哈哈哈");
-        }
+        int a = Integer.MIN_VALUE;
+        a *= 2;
+        System.out.println(a);
     }
 
     public void duplicateZeros(int[] arr) {
         int n = arr.length;
         int top = 0;
-        int i =-1;
-        while(top<n){
+        int i = -1;
+        while (top < n){
             i++;
-            if (arr[i]!=0){
+            if (arr[i] != 0){
                 top++;
             }else{
                 top +=2;

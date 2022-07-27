@@ -50,23 +50,16 @@ public class XuanZhuanShuZuDeZuiXiaoShuZiLcof{
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int minArray(int[] numbers) {
-        // 旋转一次后的最小值
-        // 二分 ，mid 和 right比。34 5 12 小说明最小值在mid或者左边，大说明在右边，等于就right--
-        int left = 0;
-        int right = numbers.length - 1;
-        int mid = 0;
+        // 旋转一次，找出最小数 135
+        // 45123 mid 和 right比较， 等于 right--， 小于 right=mid ， 大于 left = mid +1;
+        int left = 0, right = numbers.length - 1;
         while (left < right) {
-            mid = left + (right - left >> 1);
-            if (numbers[mid] < numbers[right]) {
-                right = mid;
-            } else if (numbers[mid] > numbers[right]) {
-                left = mid + 1;
-            } else {
-                right--;
-            }
+            int mid = left + (right - left >> 1);
+            if (numbers[mid] == numbers[right]) right--;
+            else if (numbers[mid] < numbers[right]) right = mid;
+            else left = mid + 1;
         }
         return numbers[right];
-
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

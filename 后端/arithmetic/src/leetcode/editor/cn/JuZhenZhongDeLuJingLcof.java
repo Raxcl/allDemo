@@ -52,11 +52,11 @@ public class JuZhenZhongDeLuJingLcof{
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public boolean exist(char[][] board, String word) {
-        // 回溯 ， 遍历找出每个首字母相同，找四周，判断与word的index位是否相符，并回溯
+        // 寻路算法 回溯
         boolean[][] used = new boolean[board.length][board[0].length];
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
-                if (dfs(used, board, word, 0, i, j)) {
+                if (dfs(board, word, i, j, 0, used)) {
                     return true;
                 }
             }
@@ -64,22 +64,21 @@ class Solution {
         return false;
     }
 
-    private boolean dfs(boolean[][] used, char[][] board, String word, int index, int i, int j) {
-        if (word.length() == index) {
+    private boolean dfs(char[][] board, String word, int i, int j, int index, boolean[][] used) {
+        if (index == word.length()) {
             return true;
         }
-        // 判断相等，进入下一步，否则返回false
-        if (i < 0 || i >= board.length || j < 0 || j >= board[0].length || used[i][j] || word.charAt(index) != board[i][j]) {
-            return false;
+        if (i >= 0 && i < board.length && j >= 0 && j < board[0].length && !used[i][j] && board[i][j] == word.charAt(index)) {
+            // 符合条件，走下一步
+            used[i][j] = true;
+            boolean flag = dfs(board, word, i + 1, j, index + 1, used) ||
+                    dfs(board, word, i - 1, j, index + 1, used) ||
+                    dfs(board, word, i , j + 1, index + 1, used) ||
+                    dfs(board, word, i , j - 1, index + 1, used);
+            used[i][j] = false;
+            return flag;
         }
-        used[i][j] = true;
-        //回溯（上下左右）
-        boolean res = dfs(used, board, word, index + 1, i - 1, j) ||
-                dfs(used, board, word, index + 1, i + 1, j) ||
-                dfs(used, board, word, index + 1, i, j - 1) ||
-                dfs(used, board, word, index + 1, i, j + 1);
-        used[i][j] = false;
-        return res;
+        return false;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

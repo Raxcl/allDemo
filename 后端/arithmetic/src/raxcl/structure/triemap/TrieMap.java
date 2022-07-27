@@ -1,7 +1,5 @@
 package raxcl.structure.triemap;
 
-import raxcl.structure.graph.review.GraphUtilReview4;
-
 import java.util.LinkedList;
 import java.util.List;
 
@@ -291,7 +289,6 @@ public class TrieMap<V> {
             if (hasKeyWithPattern(node.children[j], pattern, i + 1)) {
                 return true;
             }
-
         }
         // 都没有匹配
         return false;
