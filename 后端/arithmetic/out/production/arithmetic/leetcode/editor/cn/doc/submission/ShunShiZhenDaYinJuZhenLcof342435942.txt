@@ -1,0 +1,47 @@
+class Solution {
+    public int[] spiralOrder(int[][] matrix) {
+        if (matrix.length == 0) return new int[]{};
+        // 顺时针遍历 + used数组
+        // 定义指针 i = 0, j = 0.
+        int m = matrix.length, n = matrix[0].length;
+        int up = 0, down = m - 1, left = 0, right = n - 1, index = 0;
+        int[] res = new int[m * n];
+        while (index < m * n ) {
+            // 右
+            if (up <= down) {
+                for (int i = left; i <= right; i++) {
+                    res[index++] = matrix[up][i];
+                }
+                up++;
+            }
+
+            // 下
+            if (left <= right) {
+                for (int i = up; i <= down; i++) {
+                    res[index++] = matrix[i][right];
+                }
+                right--;
+            }
+
+            // 左
+            if (up <= down) {
+                for (int i = right; i >= left; i--) {
+                    res[index++] = matrix[down][i];
+                }
+                down--;
+            }
+
+            // 上
+            if (left <= right) {
+                for (int i = down; i >= up; i--) {
+                    res[index++] = matrix[i][left];
+                }
+                left++;
+            }
+        }
+        return res;
+    }
+}
+
+//runtime:0 ms
+//memory:43.2 MB

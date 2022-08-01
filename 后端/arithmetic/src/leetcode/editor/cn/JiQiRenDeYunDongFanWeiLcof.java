@@ -37,34 +37,31 @@ public class JiQiRenDeYunDongFanWeiLcof{
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int movingCount(int m, int n, int k) {
-        // 统计能走多少格，模拟， 递归，状态数组
-        // 右下走，递归
-        // 左上开始
+       // 运动范围 向右下dfs递归
         boolean[][] used = new boolean[m][n];
         return dfs(0, 0, m, n, k, used);
+
     }
 
     private int dfs(int i, int j, int m, int n, int k, boolean[][] used) {
-        // 判断当前格是否能走
-
-        if (i >= m || j >= n || used[i][j] || !check(i, j, k)) return 0;
-        used[i][j] = true;
-        return 1 + dfs(i + 1, j, m, n, k, used) + dfs(i, j + 1, m, n, k, used);
+        if (i < m && j < n && check(i, j, k) && !used[i][j]) {
+            used[i][j] = true;
+            return 1 + dfs(i + 1, j, m, n, k, used) + dfs(i, j + 1, m, n, k, used);
+        }
+        return 0;
     }
 
     private boolean check(int i, int j, int k) {
-        int res = 0;
-        while (i > 0 || j > 0) {
-            if (i > 0) {
-                res += i % 10;
-                i /= 10;
-            }
-            if (j > 0) {
-                res += j % 10;
-                j /= 10;
-            }
+        int temp = 0;
+        while (i != 0) {
+            temp += i % 10;
+            i /= 10;
         }
-        return res <= k;
+        while (j != 0) {
+            temp += j % 10;
+            j /= 10;
+        }
+        return temp <= k;
     }
 
 

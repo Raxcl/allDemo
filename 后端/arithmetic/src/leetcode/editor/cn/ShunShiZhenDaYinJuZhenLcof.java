@@ -41,12 +41,9 @@ public class ShunShiZhenDaYinJuZhenLcof{
 class Solution {
     public int[] spiralOrder(int[][] matrix) {
         if (matrix.length == 0) return new int[]{};
-        // 顺时针遍历 + used数组
-        // 定义指针 i = 0, j = 0.
-        int m = matrix.length, n = matrix[0].length;
-        int up = 0, down = m - 1, left = 0, right = n - 1, index = 0;
+        int m = matrix.length, n = matrix[0].length, left = 0, right = n - 1, up = 0, down = m - 1, index = 0;
         int[] res = new int[m * n];
-        while (index < m * n ) {
+        while (index != res.length) {
             // 右
             if (up <= down) {
                 for (int i = left; i <= right; i++) {

@@ -56,51 +56,42 @@ public class ImplementTriePrefixTree{
 
 //leetcode submit region begin(Prohibit modification and deletion)
 class Trie {
-    class TrieNode{
+
+    class TrieNode {
         boolean end;
         TrieNode[] tns = new TrieNode[26];
     }
-
     TrieNode root;
     public Trie() {
         root = new TrieNode();
     }
     
     public void insert(String word) {
-        // 遍历字符串，判断字符 c 是否存在， 不存在就新建并存入
-        // 结尾处 node = true；
-        TrieNode p = root;
+        TrieNode node = root;
         for (int i = 0; i < word.length(); i++) {
             int u = word.charAt(i) - 'a';
-            if (p.tns[u] == null) {
-                p.tns[u] = new TrieNode();
-            }
-            p = p.tns[u];
+            if (node.tns[u] == null) node.tns[u] = new TrieNode();
+            node = node.tns[u];
         }
-        p.end = true;
+        node.end = true;
     }
     
     public boolean search(String word) {
-        // 不存在或者 最后一位不为 true
-        TrieNode p = root;
+        TrieNode node = root;
         for (int i = 0; i < word.length(); i++) {
             int u = word.charAt(i) - 'a';
-            if (p.tns[u] == null) {
-                return false;
-            }
-            p = p.tns[u];
+            if (node.tns[u] == null) return false;
+            node = node.tns[u];
         }
-        return p.end;
+         return node.end;
     }
     
     public boolean startsWith(String prefix) {
-        TrieNode p = root;
+        TrieNode node = root;
         for (int i = 0; i < prefix.length(); i++) {
             int u = prefix.charAt(i) - 'a';
-            if (p.tns[u] == null) {
-                return false;
-            }
-            p = p.tns[u];
+            if (node.tns[u] == null) return false;
+            node = node.tns[u];
         }
         return true;
     }

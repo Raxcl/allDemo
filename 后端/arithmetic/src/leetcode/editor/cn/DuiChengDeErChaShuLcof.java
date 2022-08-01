@@ -53,17 +53,17 @@ public class DuiChengDeErChaShuLcof{
  */
 class Solution {
     public boolean isSymmetric(TreeNode root) {
-        if (root == null) return true;
+        if(root == null) return true;
         return checkTree(root.left, root.right);
     }
 
     private boolean checkTree(TreeNode left, TreeNode right) {
         if (left == null || right == null) return left == right;
-        // 两个根节点需要相同
-        if (left.val != right.val) return false;
-        return checkTree(left.right, right.left) && checkTree(left.left, right.right);
+        if (left.val == right.val) {
+            return checkTree(left.left, right.right) && checkTree(left.right, right.left);
+        }
+        return false;
     }
-
 }
 //leetcode submit region end(Prohibit modification and deletion)
 

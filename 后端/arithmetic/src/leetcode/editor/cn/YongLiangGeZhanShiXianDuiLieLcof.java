@@ -41,30 +41,25 @@ public class YongLiangGeZhanShiXianDuiLieLcof{
 
 //leetcode submit region begin(Prohibit modification and deletion)
 class CQueue {
-    Deque<Integer> stack1 = new ArrayDeque<>();
-    Deque<Integer> stack2 = new ArrayDeque<>();
+    Deque<Integer> inStack;
+    Deque<Integer> outStack;
     public CQueue() {
-
+        inStack = new ArrayDeque<>();
+        outStack = new ArrayDeque<>();
     }
     
     public void appendTail(int value) {
-        stack1.addLast(value);
+        inStack.addLast(value);
     }
     
     public int deleteHead() {
-        // 如果stack2为空,并且stack1不为空，导入
-        // 如果不为空，删除
-        //-1 保底
-        if (stack2.isEmpty() && !stack1.isEmpty()) {
-                // 倒入
-                while (!stack1.isEmpty()) {
-                    stack2.addLast(stack1.removeLast());
-                }
+        if (outStack.isEmpty()) {
+            if (inStack.isEmpty()) return -1;
+            while (!inStack.isEmpty()) {
+                outStack.addLast(inStack.removeLast());
+            }
         }
-        if (!stack2.isEmpty()) {
-           return stack2.removeLast();
-        }
-        return -1;
+        return outStack.removeLast();
     }
 }
 

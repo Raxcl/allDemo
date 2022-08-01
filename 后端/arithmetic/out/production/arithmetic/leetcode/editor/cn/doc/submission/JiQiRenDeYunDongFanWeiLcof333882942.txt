@@ -1,0 +1,56 @@
+class Solution {
+    /**
+     * 经典的回溯算法
+     * 从0，0开始，上下左右递归，定义int[][]用于回溯，全部初始化0，走过标记为1，不能走标记2,结束后统计1的数量即可
+     * 1. 初始化int[m][n]=0;
+     * 判断当前是否满足
+     * 2. 深度遍历，上下左右四个角，如果为0，判断是否满足k条件
+     * 3. 如何求k条件？求位数和（新开一个方法）
+     * 4. 走过就标记1,不能走的地方标记2
+     * 5. 全部结束，统计1的个数
+     */
+    boolean[][] path;
+    int index;
+    int m,n;
+    public int movingCount(int m, int n, int k) {
+        path = new boolean[m][n];
+        this.m=m;
+        this.n=n;
+        dfs(0, 0, k);
+        return index;
+    }
+
+    public void dfs(int i, int j, int k){
+        if(i<0 || i>=m || j<0 || j>=n || path[i][j]){
+            return;
+        }
+        if(getSum(i,j,k)){
+            path[i][j] = true;
+            index++;
+            dfs(i-1,j,k);
+            dfs(i+1,j,k);
+            dfs(i,j-1,k);
+            dfs(i,j+1,k);
+        }
+    }
+
+    public boolean getSum(int m, int n, int k){
+        int sum = 0;
+        while(m!=0){
+            sum += m%10;
+            m /= 10;
+        }
+        while(n!=0){
+            sum += n%10;
+            n /= 10;
+        }
+        if (sum>k){
+            return false;
+        }else{
+            return true;
+        }
+    }
+}
+
+//runtime:1 ms
+//memory:38.2 MB
