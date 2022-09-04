@@ -14,7 +14,80 @@ public class ConcurrentTest {
     public static void main(String[] args) {
         ConcurrentTest concurrentTest = new ConcurrentTest();
         // 一个 main() 进程中的线程展示
-        concurrentTest.threadNumTest();
+//        concurrentTest.threadNumTest();
+        // 死锁模拟
+//        concurrentTest.deadLock();
+        // 避免死锁
+        concurrentTest.noDeadLock();
+
+    }
+
+    private void noDeadLock() {
+        new Thread(() -> {
+            synchronized (resource1) {
+                System.out.println(Thread.currentThread() + "get resource1");
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println(Thread.currentThread() + "waiting get resource2");
+                synchronized (resource2) {
+                    System.out.println(Thread.currentThread() + "get resource2");
+                }
+            }
+        }, "线程1").start();
+
+        new Thread(() -> {
+            synchronized (resource1) {
+                System.out.println(Thread.currentThread() + "get resource1");
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println(Thread.currentThread() + "waiting get resource2");
+                synchronized (resource2) {
+                    System.out.println(Thread.currentThread() + "get resource1");
+                }
+            }
+        }, "线程2").start();
+
+    }
+
+    private Object resource1 = new Object(); // 资源 1
+    private Object resource2 = new Object(); // 资源 2
+
+    private void deadLock() {
+        new Thread(() -> {
+            synchronized (resource1) {
+                System.out.println(Thread.currentThread() + "get resource1");
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println(Thread.currentThread() + "waiting get resource2");
+                synchronized (resource2) {
+                    System.out.println(Thread.currentThread() + "get resource2");
+                }
+            }
+        }, "线程1").start();
+
+        new Thread(() -> {
+            synchronized (resource2) {
+                System.out.println(Thread.currentThread() + "get resource2");
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println(Thread.currentThread() + "waiting get resource1");
+                synchronized (resource1) {
+                    System.out.println(Thread.currentThread() + "get resource1");
+                }
+            }
+        }, "线程2").start();
     }
 
     private void threadNumTest() {
