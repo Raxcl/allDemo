@@ -1,5 +1,8 @@
 package cn.raxcl.basic.test;
 
+import org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory;
+
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,11 +13,18 @@ import java.util.Map;
 public class Test {
     private static byte a;
     public static void main(String[] args)  {
-        Runtime runtime = Runtime.getRuntime();
-        //获取当前电脑的CPU数量/核心数
-        int cpuNums = runtime.availableProcessors();
-        System.out.println("当前有CPU个数 "+cpuNums);//当前有CPU个数 8
+            String str = "繁hsdf噶";
+        System.out.println(str.length());
+//        int[] arr = {1};
+//        Test test = new Test();
+//        test.change(arr);
+//        System.out.println(Arrays.toString(arr));
 
+    }
+
+    private void change(int[] arr) {
+//        arr[0] = 2;
+        arr[0]++;
     }
 
     private void a() {
