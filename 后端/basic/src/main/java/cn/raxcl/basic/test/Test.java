@@ -5,6 +5,7 @@ import org.springframework.beans.factory.support.AbstractAutowireCapableBeanFact
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * @author D30100_chenlong
@@ -19,6 +20,9 @@ public class Test {
 //        Test test = new Test();
 //        test.change(arr);
 //        System.out.println(Arrays.toString(arr));
+        Model model = null;
+        String name = Objects.requireNonNull(model).getName();
+        System.out.println(name);
 
     }
 
