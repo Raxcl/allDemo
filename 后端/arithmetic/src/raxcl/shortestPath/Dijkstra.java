@@ -1,5 +1,6 @@
 package raxcl.shortestPath;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -14,6 +15,8 @@ public class Dijkstra {
         Graph graph = new Graph(7);
         initGraph(graph);
         int[] distances = dijkstra(graph,0);
+        System.out.println(Arrays.toString(distances));
+
         System.out.println(distances[6]);
         System.out.println("输出完整路径：");
         int[] prevs = dijkstraV2(graph,0);

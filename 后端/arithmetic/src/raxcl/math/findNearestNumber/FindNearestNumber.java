@@ -33,6 +33,7 @@ public class FindNearestNumber {
         for (int i=numbers.length-1; i>0; i--){
             if(numbers[index]<numbers[i]){
                 Swap.swap(numbers,index,i);
+                break;
             }
         }
         //把原来的逆序区域转为顺序

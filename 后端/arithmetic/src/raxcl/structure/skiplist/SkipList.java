@@ -75,6 +75,7 @@ public class SkipList {
             appendNode(preNode, upperNode);
             upperNode.down = node;
             node.up = upperNode;
+            // todo 这一行貌似没有意义 有的，在循环内，为了晋升
             node = upperNode;
             currentLevel++;
         }

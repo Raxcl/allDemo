@@ -38,8 +38,9 @@ public class StackTraverse {
     /**
      * 二叉树中序遍历
      */
-    public static void inOrderTraveralWithStack(TreeNode treeNode) {
+    public static void inOrderTraveralWithStack(TreeNode root) {
         Stack<TreeNode> stack = new Stack<>();
+        TreeNode treeNode = root;
         while(treeNode !=null || !stack.isEmpty()){
             //迭代访问左孩子，入栈
             while(treeNode !=null){
@@ -59,8 +60,9 @@ public class StackTraverse {
     /**
      * 二叉树的后续遍历
      */
-    public static void postOrderTraveralWithStack(TreeNode treeNode){
+    public static void postOrderTraveralWithStack(TreeNode root){
         Stack<TreeNode> stack = new Stack<>();
+        TreeNode treeNode = root;
         TreeNode pre = null;
         while(treeNode!=null || !stack.isEmpty()){
             //遍历到最左孩子，为空，出栈根，访问右孩子，为空就输出根
@@ -75,8 +77,9 @@ public class StackTraverse {
             }else{
                 if (!stack.isEmpty()){
                     treeNode = stack.pop();
-                    System.out.println(treeNode);
+                    System.out.print(treeNode.data + " ");
                     pre = treeNode;
+                    treeNode = null;
                 }
             }
         }
@@ -85,7 +88,6 @@ public class StackTraverse {
 
     public static void main(String[] args) {
         LinkedList<Integer> inputList = new LinkedList<>(Arrays.asList(new Integer[]{1,2,4,null,null,5,null,null,3,null,6}));
-        System.out.println("原二叉树");
         TreeNode treeNode = Recursion.createBinaryTree(inputList);
         System.out.println();
         System.out.println("前序遍历：");
@@ -96,6 +98,8 @@ public class StackTraverse {
         System.out.println();
         System.out.println("后续遍历");
         postOrderTraveralWithStack(treeNode);
+        System.out.println();
+
     }
 
 }

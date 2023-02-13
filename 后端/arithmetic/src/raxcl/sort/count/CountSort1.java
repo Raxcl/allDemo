@@ -34,6 +34,7 @@ public class CountSort1 {
             countArray[a - min]++;
         }
         //统计数组做变形，后面的元素等于前面的元素之和
+        // todo 为什么要求和？ 确定位置
         for (int i=1; i<countArray.length; i++){
             countArray[i] += countArray[i-1];
         }
