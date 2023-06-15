@@ -1,0 +1,148 @@
+{
+  "ID": "TMOW:KYXP:MKBK:QUYN:2SI2:4V6M:5MTV:E5VX:OJDP:4B2P:7VEW:TNYJ",
+  "Containers": 6,
+  "ContainersRunning": 0,
+  "ContainersPaused": 0,
+  "ContainersStopped": 6,
+  "Images": 47,
+  "Driver": "overlay2",
+  "DriverStatus": [
+    [
+      "Backing Filesystem",
+      "extfs"
+    ],
+    [
+      "Supports d_type",
+      "true"
+    ],
+    [
+      "Native Overlay Diff",
+      "true"
+    ],
+    [
+      "userxattr",
+      "false"
+    ]
+  ],
+  "Plugins": {
+    "Volume": [
+      "local"
+    ],
+    "Network": [
+      "bridge",
+      "host",
+      "ipvlan",
+      "macvlan",
+      "null",
+      "overlay"
+    ],
+    "Authorization": null,
+    "Log": [
+      "awslogs",
+      "fluentd",
+      "gcplogs",
+      "gelf",
+      "journald",
+      "json-file",
+      "local",
+      "logentries",
+      "splunk",
+      "syslog"
+    ]
+  },
+  "MemoryLimit": true,
+  "SwapLimit": true,
+  "KernelMemory": true,
+  "KernelMemoryTCP": true,
+  "CpuCfsPeriod": true,
+  "CpuCfsQuota": true,
+  "CPUShares": true,
+  "CPUSet": true,
+  "PidsLimit": true,
+  "IPv4Forwarding": true,
+  "BridgeNfIptables": true,
+  "BridgeNfIp6tables": true,
+  "Debug": false,
+  "NFd": 28,
+  "OomKillDisable": true,
+  "NGoroutines": 35,
+  "SystemTime": "2023-02-15T09:57:01.420099519+08:00",
+  "LoggingDriver": "json-file",
+  "CgroupDriver": "cgroupfs",
+  "CgroupVersion": "1",
+  "NEventsListener": 0,
+  "KernelVersion": "4.18.0-305.3.1.el8.x86_64",
+  "OperatingSystem": "CentOS Linux 8 (Core)",
+  "OSVersion": "8",
+  "OSType": "linux",
+  "Architecture": "x86_64",
+  "IndexServerAddress": "https://index.docker.io/v1/",
+  "RegistryConfig": {
+    "AllowNondistributableArtifactsCIDRs": [],
+    "AllowNondistributableArtifactsHostnames": [],
+    "InsecureRegistryCIDRs": [
+      "127.0.0.0/8"
+    ],
+    "IndexConfigs": {
+      "docker.io": {
+        "Name": "docker.io",
+        "Mirrors": [],
+        "Secure": true,
+        "Official": true
+      }
+    },
+    "Mirrors": []
+  },
+  "NCPU": 4,
+  "MemTotal": 3917725696,
+  "GenericResources": null,
+  "DockerRootDir": "/var/lib/docker",
+  "HttpProxy": "",
+  "HttpsProxy": "",
+  "NoProxy": "",
+  "Name": "VM-20-12-centos",
+  "Labels": [],
+  "ExperimentalBuild": false,
+  "ServerVersion": "20.10.12",
+  "Runtimes": {
+    "io.containerd.runc.v2": {
+      "path": "runc"
+    },
+    "io.containerd.runtime.v1.linux": {
+      "path": "runc"
+    },
+    "runc": {
+      "path": "runc"
+    }
+  },
+  "DefaultRuntime": "runc",
+  "Swarm": {
+    "NodeID": "",
+    "NodeAddr": "",
+    "LocalNodeState": "inactive",
+    "ControlAvailable": false,
+    "Error": "",
+    "RemoteManagers": null
+  },
+  "LiveRestoreEnabled": false,
+  "Isolation": "",
+  "InitBinary": "docker-init",
+  "ContainerdCommit": {
+    "ID": "7b11cfaabd73bb80907dd23182b9347b4245eb5d",
+    "Expected": "7b11cfaabd73bb80907dd23182b9347b4245eb5d"
+  },
+  "RuncCommit": {
+    "ID": "v1.0.2-0-g52b36a2",
+    "Expected": "v1.0.2-0-g52b36a2"
+  },
+  "InitCommit": {
+    "ID": "de40ad0",
+    "Expected": "de40ad0"
+  },
+  "SecurityOptions": [
+    "name=seccomp,profile=default"
+  ],
+  "Warnings": [
+    "WARNING: API is accessible on http://0.0.0.0:2376 without encryption.\n         Access to the remote API is equivalent to root access on the host. Refer\n         to the 'Docker daemon attack surface' section in the documentation for\n         more information: https://docs.docker.com/go/attack-surface/"
+  ]
+}

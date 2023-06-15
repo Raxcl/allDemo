@@ -2,7 +2,9 @@ package cn.raxcl.basic.string;
 
 import org.springframework.util.StringUtils;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author D30100_chenlong
@@ -16,5 +18,6 @@ public class StringTest {
         System.out.println(Arrays.toString(s));
         System.out.println(s.length);
         System.out.println(3 == 3 && 4==4);
+        List<String> list = new ArrayList<>();
     }
 }
